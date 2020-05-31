@@ -9,43 +9,31 @@ import java.util.List;
 @XmlRootElement(name = "averageCurrencyValue")
 public class AverageCurrencyValue {
 
-    public AverageCurrencyValue(String currency, double avg) {
+    @SerializedName("currency")
+    @Expose
+    private final String currency;
+    @SerializedName("avg")
+    @Expose
+    private double avg;
+
+    public AverageCurrencyValue(List<Rate> rates, String currency) {
+        countAverageRate(rates);
         this.currency = currency;
-        this.avg = avg;
-    }
-
-    public AverageCurrencyValue() {
-
     }
 
     public String getCurrency() {
         return currency;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
     public double getAvg() {
         return avg;
     }
 
-    public void setAvg(double avg) {
-        this.avg = avg;
-    }
-
-    @SerializedName("currency")
-    @Expose
-    private String currency;
-    @SerializedName("avg")
-    @Expose
-    private double avg;
-
-    public double countAverageRate(List<Rate> rates) {
+    private void countAverageRate(List<Rate> rates) {
         double sum = 0;
-        for(Rate rate : rates) {
-            sum+=rate.getMid();
+        for (Rate rate : rates) {
+            sum += rate.getMid();
         }
-        return  sum/rates.size();
+        this.avg = sum / rates.size();
     }
 }

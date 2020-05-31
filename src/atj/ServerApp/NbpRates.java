@@ -3,17 +3,24 @@ package atj.ServerApp;
 import atj.client.RestClient;
 import atj.services.AverageCurrencyValue;
 import atj.services.RatesService;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 
 @Path("/nbpRates")
-@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+@Produces({APPLICATION_XML, APPLICATION_JSON})
 public class NbpRates {
 
-    RestClient restClient = new RestClient();
+    private final RestClient restClient = new RestClient();
 
-    public NbpRates() {
-    }
+//    public NbpRates(RestClient restClient) {
+//        this.restClient = restClient;
+//    }
 
     @GET
     @Path("/{table}/{code}")

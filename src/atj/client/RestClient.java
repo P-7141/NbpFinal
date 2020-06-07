@@ -1,13 +1,8 @@
 package atj.client;
 
 import atj.services.AverageCurrencyValue;
-import atj.services.Rate;
 import atj.services.RatesService;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 public class RestClient {
 
@@ -29,5 +24,4 @@ public class RestClient {
 
         return new AverageCurrencyValue(service.getRates(), service.getCurrency());
     }
-
 }

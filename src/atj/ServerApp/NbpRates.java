@@ -18,10 +18,6 @@ public class NbpRates {
 
     private final RestClient restClient = new RestClient();
 
-//    public NbpRates(RestClient restClient) {
-//        this.restClient = restClient;
-//    }
-
     @GET
     @Path("/{table}/{code}")
     public RatesService getRatesForNBP(@PathParam("table") String table, @PathParam("code") String code) {

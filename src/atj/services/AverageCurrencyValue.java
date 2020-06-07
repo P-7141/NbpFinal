@@ -3,15 +3,16 @@ package atj.services;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
-@XmlRootElement(name = "averageCurrencyValue")
+@XmlRootElement
 public class AverageCurrencyValue {
 
     @SerializedName("currency")
     @Expose
-    private final String currency;
+    private String currency;
     @SerializedName("avg")
     @Expose
     private double avg;
@@ -21,10 +22,16 @@ public class AverageCurrencyValue {
         this.currency = currency;
     }
 
+    public AverageCurrencyValue() {
+
+    }
+
+    @XmlElement
     public String getCurrency() {
         return currency;
     }
 
+    @XmlElement
     public double getAvg() {
         return avg;
     }
